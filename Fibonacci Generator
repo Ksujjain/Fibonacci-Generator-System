@@ -1,0 +1,24 @@
+class FibonacciGenerator:
+    def _init_(self, limit):
+        self.limit = limit
+        self.a, self.b = 0, 1
+        self.counter = 0
+
+    def _iter_(self):
+        return self
+
+    def _next_(self):
+        if self.counter >= self.limit:
+            raise StopIteration
+        else:
+            result = self.a
+            self.a, self.b = self.b, self.a + self.b
+            self.counter += 1
+            return result
+
+# Example usage:
+limit = 10  # Change this to the number of Fibonacci numbers you want.
+fibonacci = FibonacciGenerator(limit)
+
+for number in fibonacci:
+    print(number)
